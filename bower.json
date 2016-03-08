@@ -1,0 +1,22 @@
+{
+  "name": "react-express-app",
+  "description": "React Express App",
+  "main": "main.js",
+  "authors": [
+    "DarriusWright"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^0.14.7"
+  }
+}
