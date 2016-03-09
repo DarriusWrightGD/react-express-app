@@ -6,5 +6,17 @@ module.exports = {
       type: Events.addItemEvent,
       item
     }
+  },
+  deleteItem: (item)=>{
+    return {
+      type: Events.deleteItemEvent,
+      item
+    }
+  },
+  toggleItem: (item)=>{
+    return {
+      type: Events.toggleItemEvent,
+      item
+    }
   }
 }

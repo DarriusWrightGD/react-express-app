@@ -32,6 +32,18 @@ gulp.task('bundle', ['copy'], function(){
 });
 
 gulp.task('copy', function(){
-  gulp.src(['app/*.css'])
+  return gulp.src(['app/**/*.css'])
   .pipe(gulp.dest('./public'))
 });
+
+gulp.task('js-watch', function(){
+  return gulp.watch('app/**/*.js', ['bundle']);
+});
+
+gulp.task('css-watch', function(){
+  return gulp.watch('app/**/*.css', ['copy']);
+});
+
+gulp.task('watch', ['css-watch','js-watch']);
+
+gulp.task('dev', ['watch','serve']);
