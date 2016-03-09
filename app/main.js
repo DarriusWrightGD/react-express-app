@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import GroceryItemList from './components/GroceryItemList';
+import App from './components/App';
+import appReducer from './stores/AppReducer';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
-var initial = [
-  {name: 'Ice Cream'},
-  {name: 'Waffles'},
-  {name: 'Candy', purchased: true},
-  {name: 'Snarks'}
-];
+var store = createStore(appReducer);
 
-ReactDOM.render(<GroceryItemList items={initial}/>, document.getElementById('app'));
+const render = ()=>{
+  ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+    document.getElementById('app'));
+}
+
+store.subscribe(render);
+render()
