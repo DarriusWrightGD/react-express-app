@@ -4,8 +4,9 @@ import App from './components/App';
 import appReducer from './stores/AppReducer';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import makeStore from './stores/makeStore';
 
-var store = createStore(appReducer);
+let store = makeStore();
 
 const render = ()=>{
   ReactDOM.render(
@@ -13,7 +14,7 @@ const render = ()=>{
       <App/>
     </Provider>,
     document.getElementById('app'));
-}
+};
 
 store.subscribe(render);
-render()
+render();

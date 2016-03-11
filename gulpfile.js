@@ -25,7 +25,10 @@ gulp.task('bundle', ['copy'], function(){
        entries: 'app/main.js',
        debug:true
    })
-   .transform("babelify", {presets: ['es2015', 'react', 'stage-0', 'stage-1', 'stage-2', 'stage-3']})
+   .transform("babelify", {
+     presets: ['es2015', 'react', 'stage-0', 'stage-1', 'stage-2', 'stage-3'],
+     plugins: ["syntax-async-functions","transform-regenerator"]
+   })
    .bundle()
    .pipe(source('app.js'))
    .pipe(gulp.dest('./public'));
