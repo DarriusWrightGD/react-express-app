@@ -1,9 +1,9 @@
 import Events from './Events';
 import fetch from 'isomorphic-fetch';
 
-const getItems = ()=>{
+const requestItems = ()=>{
   return {
-    type: Events.getItemsEvent,
+    type: Events.requestItemsEvent,
   }
 };
 
@@ -11,6 +11,13 @@ const recieveItems = (groceryItemList)=>{
   return {
     type: Events.recieveItemsEvent,
     groceryItemList
+  }
+};
+
+const unableToRecieveItems = (errorMessage)=>{
+  return {
+    type: Events.unableToRecieveItems,
+    errorMessage
   }
 };
 
@@ -38,12 +45,15 @@ module.exports = {
   },
 
   fetchItems: ()=>{
-    let self = this;
-    return dispatch =>{
-      dispatch(getItems());
-      return fetch('/api/items')
-        .then(response => response.json())
-        .then(json => dispatch(recieveItems(json)));
+    return async (dispatch) =>{
+      dispatch(requestItems());
+      try{
+        let response = await fetch('/api/items');
+        let json = await response.json();
+        return dispatch(recieveItems(json));
+      }catch(e){
+        return dispatch(unableToRecieveItems(e.message));
+      }
     }
   }
 }
