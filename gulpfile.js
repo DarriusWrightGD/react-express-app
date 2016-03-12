@@ -5,8 +5,9 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 
+var server;
 gulp.task('live-server', function(){
-   var server = new liveServer('server/main.js');
+   server = new liveServer('server/main.js');
    server.start();
 });
 
@@ -29,7 +30,11 @@ gulp.task('bundle', ['copy'], function(){
      presets: ['es2015', 'react', 'stage-0', 'stage-1', 'stage-2', 'stage-3'],
      plugins: ["syntax-async-functions","transform-regenerator"]
    })
-   .bundle()
+   .bundle().on('error', function(error){
+     console.error(error.message);
+     server.stop();
+     process.exit(1);
+   })
    .pipe(source('app.js'))
    .pipe(gulp.dest('./public'));
 });

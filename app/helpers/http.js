@@ -1,24 +1,20 @@
-import $ from 'jquery';
+import fetch from 'isomorphic-fetch';
 
-const request = (url, type, data)=>{
-  return new Promise((success, error)=>{
-    $.ajax({
-      url,
-      type,
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify(data),
-      success,
-      error
-    });
+const request = (url, method, body)=>{
+  let headers= new Headers();
+  headers.append('Content-Type', 'application/json');
+  fetch(url, {
+    method,
+    headers,
+    body: JSON.stringify(body),
+    cache: 'default',
+    mode:'cors'
   });
 }
 
 module.exports = {
   get: (url)=>{
-    console.log('fetch', fetch);
     return fetch(url);
-    //return $.get(url);
   },
   post: (url, data)=>{
     return request(url, 'POST', data);

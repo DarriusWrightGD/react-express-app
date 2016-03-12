@@ -79,9 +79,7 @@ const updateItem= (item)=>{
   return async (dispatch)=>{
     dispatch(requestItemUpdate(item));
     try{
-      console.log('Item',item);
       await http.put(url,item);
-      console.log('Done');
       return dispatch(updateItemComplete());
     }catch(e){
       return dispatch(fetchItems());
@@ -104,7 +102,7 @@ const addItemComplete= ()=>{
 
 const addItem= (item)=>{
   return async (dispatch)=>{
-    dispatch(requestAddItem());
+    dispatch(requestAddItem(item));
     try{
       await http.post(url,item);
       return dispatch(addItemComplete());
