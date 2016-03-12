@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ({name, purchased, deleteItem, toggleItem}) {
+export default function ({name, purchased, removeItem, updateItem}) {
   let purchaseText = 'Buy';
   let purchaseStyle = '';
   if(purchased){
@@ -13,10 +13,10 @@ export default function ({name, purchased, deleteItem, toggleItem}) {
       <div className='six columns'>
         <h4 className={purchased ? 'strikethrough' : ''}>{name}</h4>
       </div>
-      <form className="three columns" onSubmit={(e)=>{e.preventDefault();toggleItem({name,purchased})}}>
+      <form className="three columns" onSubmit={(e)=>{e.preventDefault();updateItem({name,purchased: !purchased})}}>
         <button className={purchaseStyle}>{purchaseText}</button>
       </form>
-      <form className="three columns" onSubmit={(e)=>{e.preventDefault();deleteItem({name})}}>
+      <form className="three columns" onSubmit={(e)=>{e.preventDefault();removeItem({name})}}>
         <button>&times;</button>
       </form>
     </div>

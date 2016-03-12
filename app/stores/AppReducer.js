@@ -1,8 +1,10 @@
 import groceryItemList from './GroceryItemListReducer';
-import isFetching from './FetchingItemsReducer';
+import fetchingItems from './FetchingItemsReducer';
+import removingItem from './RemovingItemReducer';
 import {combineReducers} from 'redux';
 
 export default combineReducers({
-  isFetching,
+  fetchingItems,
+  removingItem,
   groceryItemList
 });

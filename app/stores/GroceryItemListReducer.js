@@ -5,25 +5,24 @@ import _ from 'lodash';
 export default function (state = [], action){
   let newState;
   switch(action.type) {
-    case Events.addItemEvent:
+    case Events.requestAddItemEvent:
       return [
         ...state,
         action.item
       ];
     break;
-    case Events.deleteItemEvent:
+    case Events.requestDeleteItemEvent:
       return state.filter((item)=>{
         return item.name !== action.item.name;
       });
     break;
-    case Events.toggleItemEvent:
+    case Events.requestUpdateItemEvent:
       let itemIndex = _.findIndex(state, (i)=>{
         return i.name === action.item.name;
       });
 
       newState = _.cloneDeep(state);
-      let item = newState[itemIndex];
-      item.purchased = !item.purchased;
+      newState[itemIndex]= action.item;
 
       return newState;
     break;

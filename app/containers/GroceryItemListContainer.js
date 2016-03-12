@@ -11,11 +11,11 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
   return {
-    deleteItem: (item)=>{
-      dispatch(actions.deleteItem(item));
+    removeItem: (item)=>{
+      dispatch(actions.removeItem(item));
     },
-    toggleItem: (item)=>{
-      dispatch(actions.toggleItem(item));
+    updateItem: (item)=>{
+      dispatch(actions.updateItem(item));
     }
   };
 };
