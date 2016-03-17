@@ -11,8 +11,8 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
   return {
-    removeItem: (item)=>{
-      dispatch(actions.removeItem(item));
+    removeItem: (id)=>{
+      dispatch(actions.removeItem(id));
     },
     updateItem: (item)=>{
       dispatch(actions.updateItem(item));

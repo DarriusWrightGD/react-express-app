@@ -4,8 +4,9 @@ export default function ({addItem}){
   let name;
   let submitItem = (e)=>{
     e.preventDefault();
-    addItem({name: name.value});
-    name.value = '';
+    let itemName = name.value;
+    addItem({name: itemName});
+    //name.reset();
   }
 
   return (

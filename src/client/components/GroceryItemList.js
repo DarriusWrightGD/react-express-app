@@ -9,7 +9,7 @@ export default function({items, removeItem, updateItem}){
         {
           items.map(function(item,index){
             return (
-              <GroceryItem key={index} removeItem={removeItem} updateItem={updateItem} {...item}/>
+              <GroceryItem key={index} removeItem={removeItem} updateItem={updateItem} item={item}/>
             );
           })
         }

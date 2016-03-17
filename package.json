@@ -5,8 +5,13 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp serve",
-    "dev": "gulp dev"
+    "dev": "gulp dev",
+    "clean": "rm -rf lib",
+    "watch-js": "./node_modules/.bin/babel src -d lib -w",
+    "dev-server": "node lib/server/webpack",
+    "server": "nodemon lib/server/main.js",
+    "start": "npm run watch-js & npm run dev-server & npm run server",
+    "build": "npm run clean && ./node_modules/.bin/babel src -d lib"
   },
   "author": "DarriusWright",
   "license": "MIT",
@@ -32,12 +37,44 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.1",
     "lodash": "^4.6.1",
+    "mongoose": "^4.4.7",
     "react": "^0.14.7",
+    "react-addons": "^0.9.1-deprecated",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
+    "require": "^2.4.20",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0",
+      "stage-1",
+      "stage-2",
+      "stage-3"
+    ],
+    "plugins": [
+      "syntax-async-functions",
+      "transform-regenerator"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-loader": "^6.2.4",
+    "css-loader": "^0.23.1",
+    "ejs-loader": "^0.2.1",
+    "express": "^4.13.4",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.2",
+    "nodemon": "^1.9.1",
+    "react": "^0.14.7",
+    "react-hot-loader": "^1.3.0",
+    "react-router": "^2.0.1",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
   }
 }

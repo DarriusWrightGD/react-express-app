@@ -37,24 +37,24 @@ const fetchItems = ()=>{
   };
 };
 
-const requestDeleteItem = (item)=>{
+const requestDeleteItem = (id)=>{
   return {
     type: Events.requestDeleteItemEvent,
-    item
+    id
   }
 };
 
 const deleteItem = ()=>{
   return {
-    type: Events.deleteItemEvent,
+    type: Events.deleteItemEvent
   }
 };
 
-const removeItem = (item)=>{
+const removeItem = (id)=>{
   return async (dispatch)=>{
-    dispatch(requestDeleteItem(item));
+    dispatch(requestDeleteItem(id));
     try{
-      let response = await http.delete(url, item);
+      let response = await http.delete(`${url}/${id}`);
       return dispatch(deleteItem());
     }catch(e){
       return dispatch(fetchItems());
@@ -79,7 +79,7 @@ const updateItem= (item)=>{
   return async (dispatch)=>{
     dispatch(requestItemUpdate(item));
     try{
-      await http.put(url,item);
+      await http.put(`${url}/${item._id}`,item);
       return dispatch(updateItemComplete());
     }catch(e){
       return dispatch(fetchItems());
