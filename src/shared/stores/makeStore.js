@@ -7,13 +7,13 @@ import actions from './Actions';
 
 const loggerMiddleware = createLogger();
 
-export default ()=>{
+export default (initialState)=>{
   let store = createStore(appReducer,
+    initialState,
     applyMiddleware(
       thunkMiddleware,
       loggerMiddleware
     )
   );
-  store.dispatch(actions.fetchItems());
   return store;
 };
