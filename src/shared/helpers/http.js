@@ -7,8 +7,7 @@ const request = (url, method, body)=>{
     method,
     headers,
     body: JSON.stringify(body),
-    cache: 'default',
-    mode:'no-cors'
+    cache: 'default'
   });
 }
 

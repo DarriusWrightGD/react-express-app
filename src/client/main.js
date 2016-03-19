@@ -26,3 +26,6 @@ const render = ()=>{
     </Provider>,
     document.getElementById('app'));
 };
+
+store.subscribe(render);
+render();
