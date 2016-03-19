@@ -6,9 +6,12 @@
       <link href='styles/styles.css' rel='stylesheet'/>
     </head>
     <body>
-      <div id='app' class='container'>
-      </div>
+      <div id='app' class='container'><%- html%></div>
+      <script type='text/javascript'>
+        window.__REDUX_STATE__ = '<%= reduxState%>';
+      </script>
+      <script src='babel-regenerator-runtime/runtime.js'></script>
+      <script src='babel-polyfill/polyfill.js'></script>
+      <script src='http://localhost:4050/app.js'></script>
     </body>
-    <script src='babel-polyfill/polyfill.js'></script>
-    <script src='http://localhost:4050/app.js'></script>
 </html>

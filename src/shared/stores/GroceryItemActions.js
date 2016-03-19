@@ -2,7 +2,7 @@ import Events from './Events';
 import fetch from 'isomorphic-fetch';
 import http from '../helpers/http';
 
-const url = '/api/items';
+const url = 'http://localhost:3000/api/items';
 
 const requestItems = ()=>{
   return {
@@ -19,7 +19,7 @@ const recieveItems = (groceryItemList)=>{
 
 const unableToRecieveItems = (errorMessage)=>{
   return {
-    type: Events.unableToRecieveItems,
+    type: Events.unableToRecieveItemsEvent,
     errorMessage
   }
 };
