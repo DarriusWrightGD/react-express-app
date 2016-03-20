@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified: TODO\" && exit 1",
     "clean": "rm -rf lib",
-    "watch-js": "./node_modules/.bin/babel src -d lib -w",
-    "dev-server": "node lib/server/webpack",
-    "server": "nodemon lib/server/main.js",
-    "start": "npm run watch-js & npm run dev-server & npm run server",
-    "build": "npm run clean && ./node_modules/.bin/babel src -d lib"
+    "watch-js": "node_modules\\.bin\\babel src -d lib -w",
+    "dev-server": "node lib\\server\\webpack",
+    "server": "nodemon lib\\server\\main.js",
+    "start": "concurrently \"npm run watch-js\" \"npm run dev-server\" \"npm run server\"",
+    "build": "npm run clean && node_modules\\.bin\\babel src -d lib"
   },
   "author": "DarriusWright",
   "license": "MIT",
@@ -58,6 +58,7 @@
     "babel-preset-stage-3": "^6.5.0",
     "babel-regenerator-runtime": "^6.5.0",
     "babelify": "^7.2.0",
+    "concurrently": "^2.0.0",
     "css-loader": "^0.23.1",
     "ejs-loader": "^0.2.1",
     "express": "^4.13.4",
