@@ -24,8 +24,11 @@
       "js"
     ],
     "collectCoverage": true,
-    "unmockedModulePathPatterns":[
-      "react"
+    "unmockedModulePathPatterns": [
+      "react",
+      "react-dom",
+      "react-addons-test-utils",
+      "fbjs"
     ]
   },
   "dependencies": {
@@ -37,6 +40,7 @@
     "lodash": "^4.6.1",
     "mongoose": "^4.4.7",
     "react": "^0.14.7",
+    "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.1",
