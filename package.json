@@ -7,11 +7,11 @@
     "test": "node_modules/.bin/jest",
     "tdd": "node_modules/.bin/jest --watch",
     "clean": "rm -rf lib",
-    "watch-js": "node_modules\\.bin\\babel src -d lib -w",
-    "dev-server": "node lib\\server\\webpack",
-    "server": "nodemon lib\\server\\main.js",
+    "watch-js": "node_modules/.bin/babel src -d lib -w",
+    "dev-server": "node lib/server/webpack",
+    "server": "nodemon lib/server/main.js",
     "start": "concurrently \"npm run watch-js\" \"npm run dev-server\" \"npm run server\"",
-    "build": "npm run clean && node_modules\\.bin\\babel src -d lib"
+    "build": "npm run clean && node_modules/.bin/babel src -d lib"
   },
   "author": "DarriusWright",
   "license": "MIT",
