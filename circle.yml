@@ -2,7 +2,7 @@ machine:
   node:
     version: 4.4
 dependencies:
-  pre:
+  override:
     - npm run bootstrap
 test:
   post:
