@@ -4,16 +4,30 @@
   "description": "React Express App",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified: TODO\" && exit 1",
+    "bootstrap": "npm install && node_modules/.bin/bower install",
+    "test": "node_modules/.bin/jest",
+    "tdd": "node_modules/.bin/jest --watch",
     "clean": "rm -rf lib",
-    "watch-js": "node_modules\\.bin\\babel src -d lib -w",
-    "dev-server": "node lib\\server\\webpack",
-    "server": "nodemon lib\\server\\main.js",
+    "watch-js": "node_modules/.bin/babel src -d lib -w",
+    "dev-server": "node lib/server/webpack",
+    "server": "nodemon lib/server/main.js",
     "start": "concurrently \"npm run watch-js\" \"npm run dev-server\" \"npm run server\"",
-    "build": "npm run clean && node_modules\\.bin\\babel src -d lib"
+    "build": "npm run clean && node_modules/.bin/babel src -d lib"
   },
   "author": "DarriusWright",
   "license": "MIT",
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "js"
+    ],
+    "unmockedModulePathPatterns": [
+      "react",
+      "react-dom",
+      "react-addons-test-utils",
+      "fbjs"
+    ]
+  },
   "dependencies": {
     "body-parser": "^1.15.0",
     "browser-sync": "^2.11.1",
@@ -23,6 +37,7 @@
     "lodash": "^4.6.1",
     "mongoose": "^4.4.7",
     "react": "^0.14.7",
+    "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.1",
@@ -46,6 +61,7 @@
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.0",
+    "babel-jest": "^9.0.3",
     "babel-loader": "^6.2.4",
     "babel-plugin-syntax-async-functions": "^6.5.0",
     "babel-plugin-transform-regenerator": "^6.6.5",
@@ -58,10 +74,12 @@
     "babel-preset-stage-3": "^6.5.0",
     "babel-regenerator-runtime": "^6.5.0",
     "babelify": "^7.2.0",
+    "bower": "^1.7.7",
     "concurrently": "^2.0.0",
     "css-loader": "^0.23.1",
     "ejs-loader": "^0.2.1",
     "express": "^4.13.4",
+    "jest-cli": "^0.9.2",
     "less": "^2.6.1",
     "less-loader": "^2.2.2",
     "nodemon": "^1.9.1",
