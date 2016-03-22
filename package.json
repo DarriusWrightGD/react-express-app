@@ -4,6 +4,7 @@
   "description": "React Express App",
   "main": "main.js",
   "scripts": {
+    "bootstrap": "npm install && node_modules/.bin/bower install",
     "test": "node_modules/.bin/jest",
     "tdd": "node_modules/.bin/jest --watch",
     "clean": "rm -rf lib",
@@ -73,6 +74,7 @@
     "babel-preset-stage-3": "^6.5.0",
     "babel-regenerator-runtime": "^6.5.0",
     "babelify": "^7.2.0",
+    "bower": "^1.7.7",
     "concurrently": "^2.0.0",
     "css-loader": "^0.23.1",
     "ejs-loader": "^0.2.1",
