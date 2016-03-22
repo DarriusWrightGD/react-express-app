@@ -1,7 +1,8 @@
 jest.unmock('../../../../src/shared/components/GroceryItem');
-import GroceryItem from '../../../../src/shared/components/GroceryItem';
+
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
+import GroceryItem from '../../../../src/shared/components/GroceryItem';
 
 describe('GroceryItem module', ()=>{
 
@@ -14,17 +15,11 @@ describe('GroceryItem module', ()=>{
         name: "Foobar",
         purchased: true
       }
-
-
     });
 
     it('should contain unbuy option', ()=>{
-      console.log(TestUtils);
-      let groceryItem = TestUtils.renderIntoDocument(
-        <GroceryItem item={item}/>
-      );
-      console.log(groceryItem);
-      var button = TestUtils.findRenderedDOMComponentWithClass(groceryItem,'grocery-item row');
+      var groceryItem = TestUtils.renderIntoDocument(<GroceryItem item={item}/>);
+      var button = TestUtils.findRenderedDOMComponentWithClass(groceryItem,'button-primary');
       expect(button.textContent).toEqual('Unbuy');
     });
   });
