@@ -4,15 +4,15 @@
   "description": "React Express App",
   "main": "main.js",
   "scripts": {
-    "bootstrap": "npm install && node_modules/.bin/bower install",
-    "test": "node_modules/.bin/jest",
+    "bootstrap": "npm install && bower install",
+    "test": "jest",
     "tdd": "node_modules/.bin/jest --watch",
     "clean": "rm -rf lib",
-    "watch-js": "node_modules/.bin/babel src -d lib -w",
+    "watch-js": "babel src -d lib -w",
     "dev-server": "node lib/server/webpack",
     "server": "nodemon lib/server/main.js",
     "start": "concurrently \"npm run watch-js\" \"npm run dev-server\" \"npm run server\"",
-    "build": "npm run clean && node_modules/.bin/babel src -d lib"
+    "build": "npm run clean && babel src -d lib"
   },
   "author": "DarriusWright",
   "license": "MIT",
@@ -25,7 +25,9 @@
       "react",
       "react-dom",
       "react-addons-test-utils",
-      "fbjs"
+      "fbjs",
+      "lodash",
+      "redux"
     ]
   },
   "dependencies": {
@@ -86,6 +88,7 @@
     "react-hot-loader": "^1.3.0",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
+    "sinon": "^1.17.3",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   }

@@ -4,7 +4,7 @@ export default class GroceryItem extends React.Component{
   render() {
     let {item, removeItem, updateItem} = this.props;
     let purchaseText = 'Buy';
-    let purchaseStyle = '';
+    let purchaseStyle;
     if(item.purchased){
       purchaseText = 'Unbuy';
       purchaseStyle = 'button-primary';
