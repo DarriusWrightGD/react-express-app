@@ -28,10 +28,8 @@ const fetchItems = ()=>{
   return async (dispatch) =>{
     dispatch(requestItems());
     try{
-      console.log('http getting', http);
       let response = await http.get(url);
       let json = await response.json();
-      console.log('about to dispatch');
       return dispatch(recieveItems(json));
     }catch(e){
       return dispatch(unableToRecieveItems(e.message));

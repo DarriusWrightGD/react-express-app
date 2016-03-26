@@ -1,9 +1,6 @@
-jest.unmock('./../../../../src/shared/stores/GroceryItemListReducer');
-jest.unmock('./../../../../src/shared/stores/Events');
-
 import {createStore} from 'redux';
-import groceryItemList from './../../../../src/shared/stores/GroceryItemListReducer';
-import Events from './../../../../src/shared/stores/Events';
+import groceryItemList from 'src/shared/stores/GroceryItemListReducer';
+import Events from 'src/shared/stores/Events';
 
 describe('GroceryItemListReducer', ()=>{
   describe('requestAddItem',()=>{
@@ -20,7 +17,7 @@ describe('GroceryItemListReducer', ()=>{
         item
       });
 
-      expect(newState.length).toEqual(initialState.length+1);
+      expect(newState.length).to.equal(initialState.length+1);
     });
   });
 
@@ -38,7 +35,7 @@ describe('GroceryItemListReducer', ()=>{
         id
       });
 
-      expect(newState.length).toEqual(initialState.length-1);
+      expect(newState.length).to.equal(initialState.length-1);
     })
   });
 
@@ -68,7 +65,7 @@ describe('GroceryItemListReducer', ()=>{
           return item._id === id;
       });
 
-      expect(currentItem.purchased).toEqual(true);
+      expect(currentItem.purchased).to.equal(true);
     });
 
     describe('recieveItems', ()=>{
@@ -88,7 +85,7 @@ describe('GroceryItemListReducer', ()=>{
           groceryItemList: newGroceryItemList
         });
 
-        expect(newState).toEqual(newGroceryItemList);
+        expect(newState).to.equal(newGroceryItemList);
       });
     });
   })

@@ -1,10 +1,7 @@
-jest.unmock('../../../../src/shared/components/GroceryItem');
-
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import GroceryItem from '../../../../src/shared/components/GroceryItem';
+import GroceryItem from 'src/shared/components/GroceryItem';
 import _ from 'lodash';
-import sinon from 'sinon';
 
 describe('GroceryItem module', ()=>{
   let item = {
@@ -25,7 +22,7 @@ describe('GroceryItem module', ()=>{
 
     it('should contain unbuy option', ()=>{
       var button = TestUtils.findRenderedDOMComponentWithClass(groceryItem,'button-primary');
-      expect(button.textContent).toEqual('Unbuy');
+      expect(button.textContent).to.equal('Unbuy');
     });
   });
 
@@ -42,7 +39,7 @@ describe('GroceryItem module', ()=>{
        return button.textContent === 'Buy'
       });
 
-      expect(buyButton).toBeTruthy();
+      expect(buyButton).to.be.ok;
     });
   });
 
@@ -62,8 +59,8 @@ describe('GroceryItem module', ()=>{
       });
 
       TestUtils.Simulate.submit(buyButton);
-      expect(item.purchased).toBe(true);
-      expect(updateItem.called).toBe(true);
+      expect(item.purchased).to.be.true;
+      expect(updateItem.called).to.be.true;
     });
 
     it('should toggle item purchased to false when true, call update', ()=>{
@@ -72,8 +69,8 @@ describe('GroceryItem module', ()=>{
 
       let unbuyButton = TestUtils.findRenderedDOMComponentWithClass(groceryItem,'button-primary');
       TestUtils.Simulate.submit(unbuyButton);
-      expect(item.purchased).toBe(false);
-      expect(updateItem.called).toBe(true);
+      expect(item.purchased).to.be.false;
+      expect(updateItem.called).to.be.true;
     });
   });
 
@@ -93,7 +90,7 @@ describe('GroceryItem module', ()=>{
       });
 
       TestUtils.Simulate.submit(removeButton);
-      expect(removeItem.called).toBe(true);
+      expect(removeItem.called).to.be.true;
     });
   })
 });
