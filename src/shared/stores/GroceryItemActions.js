@@ -1,6 +1,6 @@
 import Events from './Events';
 import fetch from 'isomorphic-fetch';
-import http from '../helpers/http';
+import http from './../helpers/http';
 
 const url = 'http://localhost:3000/api/items';
 

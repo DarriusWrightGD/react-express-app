@@ -29,13 +29,19 @@ module.exports = {
     }
   ],
   resolve: {
+    root: __dirname,
+    modulesDirectories: [
+      'src',
+      '__tests__',
+      'node_modules'
+    ],
     extensions: ['', '.js']
   },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: path.join(__dirname,'src'),
+        exclude: /node_modules/,
         loader: 'react-hot!babel'
       },
       {
