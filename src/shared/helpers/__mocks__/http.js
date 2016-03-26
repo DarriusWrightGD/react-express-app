@@ -1,17 +1,15 @@
-var exports = jest.genMockFromModule('./../restHelper.js');
+//var exports = jest.genMockFromModule('./../restHelper.js');
 
-exports.get.mockImplementation((a)=>{
-  var sucess = new Promise(function(resolve){
-    return new Promise(function(){
-      {
-        json: ()=>{
+exports.get = (url)=>{
+  var success = new Promise((resolve)=>{
+    return new Promise(()=> {
+      return {
+        json: ()=> {
           return []
         }
       }
     })
-  })
+  });
 
   return success;
-});
-
-module.exports = exports;
+};

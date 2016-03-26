@@ -1,6 +1,6 @@
 import Events from './Events';
 import fetch from 'isomorphic-fetch';
-import http from '../helpers/http';
+import http from './../helpers/http';
 
 const url = 'http://localhost:3000/api/items';
 
@@ -28,8 +28,10 @@ const fetchItems = ()=>{
   return async (dispatch) =>{
     dispatch(requestItems());
     try{
+      console.log('http getting', http);
       let response = await http.get(url);
       let json = await response.json();
+      console.log('about to dispatch');
       return dispatch(recieveItems(json));
     }catch(e){
       return dispatch(unableToRecieveItems(e.message));
